@@ -6,7 +6,7 @@ APK="$SD/app/build/outputs/apk/app-debug.apk"
 REMOTEDEST="/var/www/simpletimer/download/simple-timer.apk"
 REMOTETMP="/tmp/.simpletimer-deploy.tmp"
 
-cat "$APK" | ssh mhm "cat > $REMOTETMP && cp $REMOTETMP $REMOTEDEST ; rm -f $REMOTETMP" 
+cat "$APK" | ssh mhm "cat > $REMOTETMP && cp $REMOTETMP $REMOTEDEST && rm -f $REMOTETMP" 
 ret=$?
 
 if [ $ret -eq 0 ]
