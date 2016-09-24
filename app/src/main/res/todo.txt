@@ -1,0 +1,26 @@
+INBOX
+-> web site
+   -> create a features/screenshot page
+
+-> phase calculation
+   -> investigate a more accurate route. the 10minute search increments can lead to random variations
+      in the multiply factor
+
+-> fix the tilt screen's text offset
+    -> I've tried a new TextView control, but it still doesn't properly align the text vertically...
+
+-> move config to SQLite
+   -> implement presets
+      -> create arguments and let TimerConfig use a preset name
+      -> pass in the preset name to loadConfig
+      -> on app startup, pass in null
+      -> in TimerConfig, use SharedPreferences to store the last loaded preset
+
+-> implement the settings icon
+   -> scale start/bell/reset buttons to fit in window
+
+-> show a credits screen
+   * perhaps on the settings screen, just show some credits and "about info"
+   -> give credits to:
+      Settings Icon made by Freepik from www.flaticon.com.
+      Licensed under Creative Commons BY 3.0

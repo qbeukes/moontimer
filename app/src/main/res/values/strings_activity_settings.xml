@@ -1,0 +1,11 @@
+<resources>
+    <string name="title_activity_settings">Configure Bell Times</string>
+
+    <string name="pref_header_times">Times</string>
+    <string name="label_bell1">Bell 1:</string>
+    <string name="label_bell2">Bell 2:</string>
+    <string name="label_bell3">Bell 3:</string>
+
+    <string name="time_spinner_title">Bell Time (min)</string>
+
+</resources>

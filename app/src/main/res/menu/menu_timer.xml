@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".TimerActivity">
+    <item android:id="@+id/action_settings" android:title="@string/action_settings"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_normaltime" android:title="@string/action_normaltime"
+        android:orderInCategory="100" app:showAsAction="never" android:checkable="true"/>
+    <item android:id="@+id/action_moontime" android:title="@string/action_moontime"
+        android:orderInCategory="100" app:showAsAction="never" android:checkable="true"/>
+</menu>
