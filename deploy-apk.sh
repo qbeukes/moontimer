@@ -4,7 +4,6 @@ SD=$(cd `dirname $0`; pwd)
 
 APK="$SD/app/build/outputs/apk/app-debug.apk"
 REMOTEDEST="/var/www/simpletimer/download/simple-timer.apk"
-REMOTEDEST="/var/www/simpletimer/download/test.apk"
 REMOTETMP="/tmp/.simpletimer-deploy.tmp"
 
 cat "$APK" | ssh mhm "cat > $REMOTETMP && cp $REMOTETMP $REMOTEDEST ; rm -f $REMOTETMP" 
