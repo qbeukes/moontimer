@@ -176,8 +176,8 @@ public class MoonPhase {
         /**
          * This preserves/recalls the last vision of the moon. New looks will continue from the last vision.
          * To create the full moon event you must look back from now, preserve your vision and look forward.
-         * Then during the hours around full moon the time will become Oyin "0.00x" and the timer slows
-         * down drastically.
+         * Then during the hours around full moon the time will become warped and slow down drastically.
+         * This phenomena I call the MoonEye Oyin:Oyin
          */
         private void preserveVision() {
             if (lastCal == null) {
