@@ -125,11 +125,12 @@ public class MoonPhase {
         //eye.baseTime.set(2017, 01, 01, 11, 48); // 2017/1/1
 
         MoonEye eye = new MoonEye();
-        //eye.setBaseTime(2016, 10, 14, 17, 32); // Maneshah full moon: 14 Oct 2016, 17:32
-        long x = eye.lookBack();
-                 eye.preserveVision();
-        long y = eye.lookForward();
+        eye.setBaseTime(2016, 10, 14, 17, 32); // Maneshah full moon: 14 Oct 2016, 17:32
+        long x  = eye.lookBack();
+                  eye.preserveVision();
+        long y  = eye.lookForward();
         long d = y - x;
+        long tS = d / (30 * 24 * 3600); // distance spread across 30 days
 
         cachedMoonLength = d;
 
