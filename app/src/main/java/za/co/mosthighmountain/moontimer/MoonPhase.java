@@ -1,4 +1,4 @@
-package za.co.mosthighmountain.simpletimer;
+package za.co.mosthighmountain.moontimer;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package za.co.mosthighmountain.simpletimer;
+package za.co.mosthighmountain.moontimer;
 
 import android.annotation.TargetApi;
 import android.content.Context;

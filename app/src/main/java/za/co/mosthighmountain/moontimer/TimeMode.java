@@ -1,4 +1,4 @@
-package za.co.mosthighmountain.simpletimer;
+package za.co.mosthighmountain.moontimer;
 
 /**
  * Created by quintin on 2016/09/11.

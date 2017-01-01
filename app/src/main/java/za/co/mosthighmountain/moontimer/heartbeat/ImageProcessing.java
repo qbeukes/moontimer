@@ -1,4 +1,4 @@
-package za.co.mosthighmountain.simpletimer.heartbeat;
+package za.co.mosthighmountain.moontimer.heartbeat;
 
 /**
  * This abstract class is used to process images.

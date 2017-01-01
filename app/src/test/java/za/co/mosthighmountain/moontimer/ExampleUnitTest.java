@@ -1,4 +1,4 @@
-package za.co.mosthighmountain.simpletimer;
+package za.co.mosthighmountain.moontimer;
 
 import org.junit.Test;
 

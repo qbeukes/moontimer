@@ -1,4 +1,4 @@
-package za.co.mosthighmountain.simpletimer.heartbeat;
+package za.co.mosthighmountain.moontimer.heartbeat;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import za.co.mosthighmountain.simpletimer.R;
+import za.co.mosthighmountain.moontimer.R;
 
 
 /**

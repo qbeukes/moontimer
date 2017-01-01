@@ -1,4 +1,4 @@
-package za.co.mosthighmountain.simpletimer.heartbeat;
+package za.co.mosthighmountain.moontimer.heartbeat;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,7 +9,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import za.co.mosthighmountain.simpletimer.R;
+import za.co.mosthighmountain.moontimer.R;
 
 
 /**
