@@ -1,5 +1,5 @@
-# simpletimer
-A simplistic timer app for Android
+# moontimer
+A simplistic timer app for Android using a moon based time unit.
 
-http://simletimer.mosthighmountain.co.za/
+http://moontimer.mosthighmountain.co.za/
 

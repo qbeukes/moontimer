@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Simple Timer</string>
+    <string name="app_name">Moon Timer</string>
 
     <string name="action_start">Starta!</string>
     <string name="action_stop">Stop</string>
