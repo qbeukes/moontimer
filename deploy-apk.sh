@@ -2,7 +2,7 @@
 
 SD=$(cd `dirname $0`; pwd)
 
-APK="$SD/app/build/outputs/apk/app-debug.apk"
+APK="$SD/app/build/outputs/apk/app-release-unsigned.apk"
 REMOTEDEST="/var/www/simpletimer/download/simple-timer.apk"
 REMOTETMP="/tmp/.simpletimer-deploy.tmp"
 

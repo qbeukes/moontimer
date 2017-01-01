@@ -64,7 +64,7 @@ public class TimerConfig {
         bells[0] = db.loadBellTime(1, 1);
         bells[1] = db.loadBellTime(2, 0);
         bells[2] = db.loadBellTime(3, 0);
-        timeMode = db.loadTimeMode("NORMAL");
+        timeMode = db.loadTimeMode("MOON");
     }
 
     /**

@@ -1,7 +1,6 @@
 package za.co.mosthighmountain.simpletimer;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,9 +12,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import za.co.mosthighmountain.simpletimer.heartbeat.HeartRateMonitorActivity;
+
 
 public class TimerActivity extends ActionBarActivity {
     private static int RESULT_SETTINGS = 1;
+
+    private static int RESULT_HEARTBEAT = 2;
 
     /**
      * Timer task
@@ -121,6 +124,10 @@ public class TimerActivity extends ActionBarActivity {
             showSettingsActivity(null);
             return true;
         }
+        else if (id == R.id.action_heartbeat) {
+            showHeartbeatActivity(null);
+            return true;
+        }
         else {
             // check if a time mode option was selected
             for (TimeMode timeMode : TimeMode.values()) {
@@ -152,5 +159,10 @@ public class TimerActivity extends ActionBarActivity {
     public void showSettingsActivity(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivityForResult(intent, RESULT_SETTINGS);
+    }
+
+    public void showHeartbeatActivity(View view) {
+        Intent intent = new Intent(this, HeartRateMonitorActivity.class);
+        startActivityForResult(intent, RESULT_HEARTBEAT);
     }
 }

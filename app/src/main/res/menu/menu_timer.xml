@@ -7,4 +7,6 @@
         android:orderInCategory="100" app:showAsAction="never" android:checkable="true"/>
     <item android:id="@+id/action_moontime" android:title="@string/action_moontime"
         android:orderInCategory="100" app:showAsAction="never" android:checkable="true"/>
+    <item android:id="@+id/action_heartbeat" android:title="@string/action_heartbeat"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

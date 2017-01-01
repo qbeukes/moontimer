@@ -9,6 +9,8 @@ import java.util.TimeZone;
  *
  * Sourced from: https://code.google.com/p/moonphase/
  * Adapted by the Quintin
+ *
+ * Written by the John Walker?? - https://en.wikipedia.org/wiki/John_Walker_(programmer)
  */
 public class MoonPhase {
 
@@ -110,50 +112,118 @@ public class MoonPhase {
         return cachedMoonLength;
     }
 
+    public static void main(String[] args) {
+        long len = getCurrentMoonLength();
+        System.out.println("Moon len: " + len);
+    }
+
     /**
      * Recalculates the moon length using the current system time
      */
     public static void refreshMoonLength() {
-        MoonPhase mp = new MoonPhase();
+        //eye.setBaseTime(2016, 10, 14, 17, 32); // Maneshah full moon: 14 Oct 2016, 17:32
+        //eye.baseTime.set(2017, 01, 01, 11, 48); // 2017/1/1
 
-        long moon1 = scanForFullMoon(mp, -600);
-        long moon2 = scanForFullMoon(mp, 600);
+        MoonEye eye = new MoonEye();
+        //eye.setBaseTime(2016, 10, 14, 17, 32); // Maneshah full moon: 14 Oct 2016, 17:32
+        long x = eye.lookBack();
+                 eye.preserveVision();
+        long y = eye.lookForward();
+        long d = y - x;
 
-        cachedMoonLength = moon2 - moon1;
+        cachedMoonLength = d;
 
         System.out.println("Calculated current moon length to be " + cachedMoonLength + " seconds.");
+        System.out.println("Calculated current second length to be " + (cachedMoonLength / (30.0f * 24 * 3600)) + " seconds.");
     }
 
-    /**
-     * Scans in a specified direction for the next fullmoon
-     * @param moonPhase
-     * @param scanIncrement Amount of seconds to increase each iteration when scanning. Negative scans backward.
-     * @return Timestamp result
-     */
-    private static long scanForFullMoon(MoonPhase moonPhase, int scanIncrement) {
-        long scanDistance = 31 * 24 * 3600;
+    private static class MoonEye {
+        static final int scanIncrement = 600; // increment in seconds by which to scan
 
-        Calendar cal = Calendar.getInstance();
+        MoonPhase moonVision = new MoonPhase();
 
-        // scan backward till the beginning of the moon
-        int prevPhase = (int)moonPhase.getPhase();
-        int phase;
-        for (long i = scanDistance; i > 0; i += scanIncrement) {
-            cal.add(Calendar.SECOND, scanIncrement);
+        Calendar baseTime = Calendar.getInstance();
 
-            moonPhase.updateCal(cal);
-            phase = (int)moonPhase.getPhase();
+        Calendar lastCal;
 
-            // if the two phases aren't the same, but their absolute values are, it means
-            // we've cross from waning to waxing (ie. full moon or -99.9 to 99.9)
-            if (prevPhase != phase && Math.abs(prevPhase) == Math.abs(phase)) {
-                break;
-            }
-
-            prevPhase = phase;
+        private void setBaseTime(int by, int bmon, int bd, int bh, int bmin) {
+            baseTime.set(by, bmon, bd, bh, bmin);
         }
 
-        return cal.getTimeInMillis() / 1000;
+        /**
+         * Look back in time for a fullmoon from the baseTime
+         */
+        private long lookBack() {
+            lastCal = lookForFullMoon(-scanIncrement);
+            return lastCal.getTimeInMillis() / 1000;
+        }
+
+        /**
+         * Look forward in time for a fullmoon from the baseTime
+         */
+        private long lookForward() {
+            lastCal = lookForFullMoon(scanIncrement);
+            return lastCal.getTimeInMillis() / 1000;
+        }
+
+        /**
+         * This will clear the vision of the moon. all future looking will happen from the baseTime
+         */
+        private void clearVision() {
+            moonVision.updateCal(baseTime);
+        }
+
+        /**
+         * This preserves/recalls the last vision of the moon. New looks will continue from the last vision.
+         * To create the full moon event you must look back from now, preserve your vision and look forward.
+         * Then during the hours around full moon the time will become Oyin "0.00x" and the timer slows
+         * down drastically.
+         */
+        private void preserveVision() {
+            if (lastCal == null) {
+                throw new IllegalStateException("There has been no vision");
+            }
+            moonVision.updateCal(lastCal);
+        }
+
+        /**
+         * Scans in a specified direction for the next fullmoon
+         *
+         * @param scanIncrement Amount of seconds to increase each iteration when scanning. Negative scans backward.
+         * @return Timestamp result
+         */
+        private Calendar lookForFullMoon(int scanIncrement) {
+            long scanDistance = 30 * 24 * 3600;
+
+            Calendar cal = (Calendar) baseTime.clone();
+
+            // scan backward till the beginning of the moon
+            int prevPhase = (int) moonVision.getPhase();
+            double prevTruePhase = moonVision.getPhase();
+            int absInc = Math.abs(scanIncrement);
+            int phase;
+            for (long i = 0; i < scanDistance; i += absInc) {
+                cal.add(Calendar.SECOND, scanIncrement);
+                moonVision.updateCal(cal);
+
+                double truePhase = moonVision.getPhase();
+                phase = (int) moonVision.getPhase();
+
+                // if the two phases aren't the same, but their absolute values are, it means
+                // we've crossed from waning to waxing (ie. full moon or -99.9 to 99.9)
+                if (prevPhase != phase && Math.abs(prevPhase) == Math.abs(phase)) {
+                    System.out.println("At a distance of " + i + " from now the phased changed from " + prevTruePhase + " to " + truePhase + ", with the abs value being " + Math.abs(prevPhase));
+                    break;
+                }
+
+                prevPhase = phase;
+                prevTruePhase = truePhase;
+            }
+
+            clearVision();
+
+            return cal;
+        }
     }
 
     /*
