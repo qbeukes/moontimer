@@ -3,8 +3,8 @@
 SD=$(cd `dirname $0`; pwd)
 
 APK="$SD/app/app-release.apk"
-REMOTEDEST="/var/www/simpletimer/download/simple-timer.apk"
-REMOTETMP="/tmp/.simpletimer-deploy.tmp"
+REMOTEDEST="/var/www/moontimer/download/moontimer.apk"
+REMOTETMP="/tmp/.moontimer-deploy.tmp"
 
 cat "$APK" | ssh mhm "cat > $REMOTETMP && cp $REMOTETMP $REMOTEDEST && rm -f $REMOTETMP" 
 ret=$?

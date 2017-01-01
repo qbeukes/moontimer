@@ -124,10 +124,10 @@ public class TimerActivity extends ActionBarActivity {
             showSettingsActivity(null);
             return true;
         }
-        else if (id == R.id.action_heartbeat) {
-            showHeartbeatActivity(null);
-            return true;
-        }
+//        else if (id == R.id.action_heartbeat) {
+//            showHeartbeatActivity(null);
+//            return true;
+//        }
         else {
             // check if a time mode option was selected
             for (TimeMode timeMode : TimeMode.values()) {

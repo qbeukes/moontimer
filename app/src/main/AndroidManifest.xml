@@ -16,13 +16,13 @@
             </intent-filter>
         </activity>
         <activity android:name="za.co.mosthighmountain.moontimer.SettingsActivity" android:label="@string/title_activity_settings"></activity>
-        <activity android:name="za.co.mosthighmountain.moontimer.heartbeat.HeartRateMonitorActivity" android:label="Heart Rate Monitor"></activity>
+        <!--<activity android:name="za.co.mosthighmountain.moontimer.heartbeat.HeartRateMonitorActivity" android:label="Heart Rate Monitor"></activity>-->
 
     </application>
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <!--<uses-permission android:name="android.permission.CAMERA" />-->
+    <!--<uses-feature android:name="android.hardware.camera" />-->
+    <!--<uses-feature android:name="android.hardware.camera.autofocus" />-->
 
 </manifest>

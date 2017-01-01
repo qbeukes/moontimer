@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'moontimer'
             keyPassword '123456'
-            storeFile file('/home/quintin/SimpleTimer/app/keys/keystore.jks')
+            storeFile file('/home/quintin/MoonTimer/app/keys/keystore.jks')
             storePassword '123456'
         }
     }
